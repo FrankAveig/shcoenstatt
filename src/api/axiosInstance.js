@@ -13,7 +13,7 @@ import { getCountryApiBaseUrl } from '../constants/countries';
  * según el país seleccionado.
  */
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_APP_API_BASE_URL,
+  baseURL: import.meta.env.VITE_APP_API_BASE_URL + '/api',
   timeout: 15000,
   headers: {
     'Content-Type': 'application/json',
