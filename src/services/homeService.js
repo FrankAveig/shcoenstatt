@@ -10,7 +10,7 @@ import axiosInstance from '../api/axiosInstance';
  * @returns {Promise}
  */
 export const getHome = async () => {
-  const { data } = await axiosInstance.get('/home');
+  const { data } = await axiosInstance.get('api/home');
   return data;
 };
 
