@@ -1,0 +1,87 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.home {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $color-white;
+}
+
+// ---- Feed area ----
+.feed {
+  padding: 12px 4px 40px;
+}
+
+// ---- Masonry grid (Pinterest identical) ----
+.masonry {
+  column-count: 7;
+  column-gap: 8px;
+  padding: 0 8px;
+
+  @include respond-to('2xl') {
+    column-count: 6;
+  }
+
+  @include respond-to('xl') {
+    column-count: 5;
+  }
+
+  @include respond-to('lg') {
+    column-count: 4;
+  }
+
+  @include respond-to('md') {
+    column-count: 3;
+  }
+
+  @include respond-to('sm') {
+    column-count: 2;
+    padding: 0 4px;
+    column-gap: 4px;
+  }
+}
+
+// ---- States ----
+.loaderWrapper {
+  @include flex-center;
+  padding: 80px 0;
+}
+
+.stateWrapper {
+  @include flex-column-center;
+  gap: $spacing-md;
+  padding: 80px $spacing-md;
+}
+
+.errorText {
+  font-size: $font-size-base;
+  color: $color-danger;
+}
+
+.retryBtn {
+  @include button-base;
+  background-color: $color-primary;
+  color: $color-white;
+  border-radius: 100px;
+  padding: $spacing-sm $spacing-xl;
+
+  &:hover {
+    background-color: $color-primary-light;
+  }
+}
+
+.emptyIcon {
+  font-size: 3rem;
+}
+
+.emptyText {
+  font-size: $font-size-base;
+  color: $color-gray-500;
+}
+
+// ---- Sentinel ----
+.sentinel {
+  @include flex-center;
+  padding: $spacing-xl 0;
+  min-height: 60px;
+}

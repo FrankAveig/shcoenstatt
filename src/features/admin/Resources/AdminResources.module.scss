@@ -1,0 +1,27 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.resources {
+  max-width: 1000px;
+}
+
+.header {
+  @include flex-between;
+  margin-bottom: $spacing-xl;
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $color-black;
+}
+
+.content {
+  @include card;
+}
+
+.empty {
+  text-align: center;
+  color: $color-gray-600;
+  padding: $spacing-2xl;
+}

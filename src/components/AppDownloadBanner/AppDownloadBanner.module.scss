@@ -1,0 +1,111 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// Solo visible en móvil (se oculta en desktop)
+.banner {
+  display: none;
+
+  @include respond-to('md') {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: $z-fixed;
+    background: $color-gray-900;
+    padding: 14px 16px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+    animation: slideUp 0.35s ease-out;
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: $border-radius-md;
+  object-fit: contain;
+  flex-shrink: 0;
+  background: $color-white;
+  padding: 4px;
+}
+
+.text {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-white;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.subtitle {
+  font-size: $font-size-xs;
+  color: $color-gray-400;
+  margin: 2px 0 0;
+  line-height: 1.3;
+}
+
+.closeBtn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $color-gray-400;
+  padding: 0;
+  border-radius: $border-radius-full;
+  transition: all $transition-fast;
+
+  &:hover,
+  &:active {
+    color: $color-white;
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.downloadBtn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 100px;
+  background: #1a73e8;
+  color: $color-white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  font-family: $font-primary;
+  cursor: pointer;
+  transition: background $transition-fast;
+  letter-spacing: 0.01em;
+
+  &:hover,
+  &:active {
+    background: #1565c0;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

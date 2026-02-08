@@ -1,0 +1,86 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.overlay {
+  @include overlay(0.5);
+  @include flex-center;
+  padding: $spacing-md;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal {
+  background: $color-white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-xl;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease;
+
+  @include custom-scrollbar;
+
+  // Tamaños
+  &.sm {
+    max-width: 400px;
+  }
+
+  &.md {
+    max-width: 600px;
+  }
+
+  &.lg {
+    max-width: 800px;
+  }
+}
+
+.header {
+  @include flex-between;
+  padding: $spacing-lg;
+  border-bottom: 1px solid $color-gray-200;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-black;
+}
+
+.closeButton {
+  @include flex-center;
+  width: 32px;
+  height: 32px;
+  border-radius: $border-radius-full;
+  font-size: $font-size-md;
+  color: $color-gray-600;
+  transition: all $transition-fast;
+
+  &:hover {
+    background-color: $color-gray-100;
+    color: $color-black;
+  }
+}
+
+.body {
+  padding: $spacing-lg;
+}
+
+// Animaciones
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

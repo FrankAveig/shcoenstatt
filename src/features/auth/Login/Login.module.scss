@@ -1,0 +1,78 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.loginPage {
+  @include flex-center;
+  min-height: 100vh;
+  background-color: $bg-light;
+  padding: $spacing-md;
+}
+
+.card {
+  @include card;
+  width: 100%;
+  max-width: 420px;
+  padding: $spacing-2xl;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $spacing-xl;
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  margin-bottom: $spacing-xs;
+}
+
+.subtitle {
+  font-size: $font-size-base;
+  color: $color-gray-600;
+}
+
+.form {
+  @include flex-column;
+  gap: $spacing-md;
+}
+
+.field {
+  @include flex-column;
+  gap: $spacing-xs;
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-gray-700;
+}
+
+.input {
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  border: 1px solid $color-gray-300;
+  border-radius: $border-radius-md;
+  font-size: $font-size-base;
+  transition: border-color $transition-fast;
+  background-color: $color-white;
+
+  &::placeholder {
+    color: $color-gray-400;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+  }
+}
+
+.error {
+  background-color: rgba($color-danger, 0.1);
+  color: $color-danger;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius-md;
+  font-size: $font-size-sm;
+  text-align: center;
+}

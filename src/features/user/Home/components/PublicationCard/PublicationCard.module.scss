@@ -1,0 +1,92 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+.card {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+// ---- Imagen ----
+.imageWrapper {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: $color-gray-100;
+
+  &.pinned::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid $color-secondary;
+    border-radius: 16px;
+    pointer-events: none;
+  }
+}
+
+.image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.imagePlaceholder {
+  @include flex-center;
+  width: 100%;
+  min-height: 200px;
+  background: linear-gradient(145deg, $color-gray-100, $color-gray-200);
+}
+
+.placeholderIcon {
+  font-size: 2rem;
+  opacity: 0.3;
+}
+
+// ---- Video badge ----
+.videoBadge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.55);
+  color: $color-white;
+  width: 44px;
+  height: 44px;
+  border-radius: $border-radius-full;
+  @include flex-center;
+  font-size: $font-size-lg;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+// ---- Pin badge ----
+.pinnedBadge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+  pointer-events: none;
+}
+
+// ---- Info (título + tiempo) ----
+.info {
+  padding: 8px 4px 0;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: $font-weight-bold;
+  color: $color-black;
+  line-height: 1.35;
+  @include text-clamp(3);
+  margin: 0;
+}
+
+.timeAgo {
+  font-size: 12px;
+  font-weight: $font-weight-regular;
+  color: $color-gray-500;
+  margin-top: 4px;
+  line-height: 1.3;
+}

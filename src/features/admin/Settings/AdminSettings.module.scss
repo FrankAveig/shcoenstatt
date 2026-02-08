@@ -1,0 +1,21 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.settings {
+  max-width: 800px;
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $color-black;
+  margin-bottom: $spacing-xl;
+}
+
+.content {
+  @include card;
+}
+
+.description {
+  color: $color-gray-600;
+}

@@ -1,0 +1,162 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+// =============================================
+// Dashboard Admin — Split Layout
+// Desktop: Carousel (izq) + Panel (der)
+// Mobile: Solo Panel (full width)
+// =============================================
+
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: $color-white;
+}
+
+// ---- Lado Carousel (solo desktop) ----
+.carouselSide {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+
+  @include respond-to('lg') {
+    display: none;
+  }
+}
+
+// ---- Lado Panel ----
+.panelSide {
+  width: 420px;
+  min-width: 380px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid $color-gray-200;
+  background: $color-white;
+
+  @include respond-to('lg') {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    border-left: none;
+  }
+}
+
+// ---- Header ----
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid $color-gray-200;
+  flex-shrink: 0;
+}
+
+.title {
+  flex: 1;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-black;
+  text-align: center;
+}
+
+.avatarBtn {
+  @include flex-center;
+  width: 38px;
+  height: 38px;
+  border-radius: $border-radius-full;
+  border: 2px solid $color-gray-200;
+  background: $color-gray-100;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all $transition-fast;
+  padding: 0;
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+  }
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatarLetter {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  line-height: 1;
+}
+
+// ---- Lista de menú ----
+.menuList {
+  flex: 1;
+  overflow-y: auto;
+  @include custom-scrollbar;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-bottom: 1px solid $color-gray-100;
+  background: $color-white;
+  cursor: pointer;
+  transition: all $transition-fast;
+  text-align: left;
+  font-family: $font-primary;
+
+  &:hover {
+    background: $color-gray-100;
+
+    .chevron {
+      opacity: 1;
+      transform: translateX(3px);
+      color: $color-primary;
+    }
+
+    .menuLabel {
+      color: $color-primary;
+    }
+  }
+
+  &:active {
+    background: $color-gray-100;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.menuIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  flex-shrink: 0;
+  color: $color-primary;
+}
+
+.menuLabel {
+  flex: 1;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $color-gray-800;
+  transition: color $transition-fast;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: $color-gray-400;
+  opacity: 0.6;
+  transition: all $transition-fast;
+}

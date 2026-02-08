@@ -1,0 +1,81 @@
+// =============================================
+// Estilos Globales - Schoenstatt
+// =============================================
+
+@use 'variables' as *;
+@use 'reset';
+
+body {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  color: $color-black;
+  background-color: $bg-light;
+}
+
+// Utilidades globales
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Tipografía global
+.heading-1 {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+}
+
+.heading-2 {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  line-height: 1.3;
+}
+
+.heading-3 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  line-height: 1.3;
+}
+
+.text-muted {
+  color: $color-gray-600;
+}
+
+.text-center {
+  text-align: center;
+}
+
+// Scrollbar global
+body {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $color-gray-100;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $color-gray-400;
+    border-radius: $border-radius-sm;
+
+    &:hover {
+      background: $color-gray-500;
+    }
+  }
+}

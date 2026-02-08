@@ -1,0 +1,264 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+// =============================================
+// Admin Ramas — Split Layout
+// Desktop: Carousel (izq) + Panel (der)
+// Mobile: Solo Panel (full width)
+// =============================================
+
+.ramas {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: $color-white;
+}
+
+// ---- Lado Carousel (solo desktop) ----
+.carouselSide {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+
+  @include respond-to('lg') {
+    display: none;
+  }
+}
+
+// ---- Lado Panel ----
+.panelSide {
+  width: 420px;
+  min-width: 380px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid $color-gray-200;
+  background: $color-white;
+
+  @include respond-to('lg') {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    border-left: none;
+  }
+}
+
+// ---- Header ----
+.header {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: 16px 20px;
+  border-bottom: 1px solid $color-gray-200;
+  flex-shrink: 0;
+}
+
+.backBtn {
+  @include flex-center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: $color-gray-800;
+  border-radius: $border-radius-full;
+  transition: all $transition-fast;
+  padding: 0;
+  flex-shrink: 0;
+
+  &:hover {
+    background: $color-gray-100;
+    color: $color-primary;
+  }
+}
+
+.title {
+  flex: 1;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-black;
+  text-align: center;
+}
+
+.avatarBtn {
+  @include flex-center;
+  width: 38px;
+  height: 38px;
+  border-radius: $border-radius-full;
+  border: 2px solid $color-gray-200;
+  background: $color-gray-100;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all $transition-fast;
+  padding: 0;
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+  }
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatarLetter {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  line-height: 1;
+}
+
+// ---- Buscador ----
+.searchWrapper {
+  position: relative;
+  padding: 12px 20px;
+  border-bottom: 1px solid $color-gray-200;
+  flex-shrink: 0;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $color-gray-500;
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px 14px 10px 40px;
+  border: 1.5px solid $color-gray-200;
+  border-radius: $border-radius-md;
+  font-size: $font-size-sm;
+  font-family: $font-primary;
+  background: $color-gray-100;
+  color: $color-black;
+  transition: all $transition-fast;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $color-gray-500;
+    font-weight: $font-weight-medium;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    background: $color-white;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.08);
+  }
+}
+
+// ---- Botón crear ----
+.addBtnWrapper {
+  padding: 12px 20px;
+  border-bottom: 1px solid $color-gray-200;
+  flex-shrink: 0;
+}
+
+.addBtn {
+  @include button-base;
+  width: 100%;
+  padding: 10px 14px;
+  background: $color-gray-100;
+  color: $color-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  border: 1px solid $color-gray-300;
+  border-radius: $border-radius-md;
+  justify-content: center;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $color-gray-200;
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}
+
+// ---- Lista de ramas ----
+.ramasList {
+  flex: 1;
+  overflow-y: auto;
+  @include custom-scrollbar;
+}
+
+.ramaItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-bottom: 1px solid $color-gray-100;
+  background: $color-white;
+  cursor: pointer;
+  transition: all $transition-fast;
+  text-align: left;
+  font-family: $font-primary;
+
+  &:hover {
+    background: $color-gray-100;
+
+    .chevron {
+      opacity: 1;
+      transform: translateX(3px);
+      color: $color-primary;
+    }
+
+    .ramaName {
+      color: $color-primary;
+    }
+  }
+
+  &:active {
+    background: $color-gray-200;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.ramaName {
+  flex: 1;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $color-gray-800;
+  transition: color $transition-fast;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: $color-gray-400;
+  opacity: 0.6;
+  transition: all $transition-fast;
+}
+
+// ---- Estados ----
+.loaderWrapper {
+  @include flex-center;
+  padding: $spacing-2xl;
+}
+
+.errorWrapper {
+  padding: $spacing-xl $spacing-md;
+  text-align: center;
+}
+
+.errorText {
+  font-size: $font-size-sm;
+  color: $color-danger;
+}
+
+.noResults {
+  text-align: center;
+  padding: $spacing-2xl $spacing-md;
+  color: $color-gray-500;
+  font-size: $font-size-sm;
+}

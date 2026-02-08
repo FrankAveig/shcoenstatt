@@ -1,0 +1,19 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.footer {
+  height: $footer-height;
+  background-color: $color-white;
+  border-top: 1px solid $color-gray-200;
+  @include flex-center;
+}
+
+.container {
+  @include container;
+  @include flex-center;
+}
+
+.text {
+  font-size: $font-size-sm;
+  color: $color-gray-600;
+}

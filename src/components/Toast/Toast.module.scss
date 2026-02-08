@@ -1,0 +1,68 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  position: fixed;
+  bottom: $spacing-xl;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: $z-tooltip;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  padding: $spacing-sm $spacing-xl;
+  border-radius: 100px;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-white;
+  box-shadow: $shadow-lg;
+  animation: slideUp 0.3s ease, fadeOut 0.3s ease 2.2s forwards;
+  white-space: nowrap;
+
+  &.info {
+    background-color: $color-gray-900;
+  }
+
+  &.success {
+    background-color: $color-success;
+  }
+
+  &.warning {
+    background-color: $color-warning;
+    color: $color-black;
+  }
+
+  &.error {
+    background-color: $color-danger;
+  }
+}
+
+.message {
+  line-height: 1.4;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
